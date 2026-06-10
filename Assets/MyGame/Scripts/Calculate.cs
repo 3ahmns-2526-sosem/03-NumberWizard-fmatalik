@@ -29,4 +29,10 @@ public class Calculate : MonoBehaviour
         min = guess + 1;
         CalculateGuess();
     }
+
+    public void LowerButton()
+    {
+        max = guess - 1;
+        CalculateGuess();
+    }
 }
