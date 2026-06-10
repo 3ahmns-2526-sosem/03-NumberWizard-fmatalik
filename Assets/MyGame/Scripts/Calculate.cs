@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Calculate : MonoBehaviour
 {
@@ -8,10 +9,16 @@ public class Calculate : MonoBehaviour
     public int guess;
 
     public TextMeshProUGUI uiGuess;
+    public GameObject winText;
+
+    public Button higherButton;
+    public Button lowerButton;
+    public Button correctButton;
 
     public void Start()
     {
         CalculateGuess();
+        winText.SetActive(false);
     }
 
     public void Update()
@@ -21,7 +28,7 @@ public class Calculate : MonoBehaviour
 
     void CalculateGuess()
     {
-        guess = Random.Range(min, max);
+        guess = (min + max)/2;
     }
 
     public void HigherButton()
@@ -34,5 +41,13 @@ public class Calculate : MonoBehaviour
     {
         max = guess - 1;
         CalculateGuess();
+    }
+
+    public void CorrectButton()
+    {
+        winText.SetActive(true);
+        higherButton.interactable = false;
+        lowerButton.interactable = false;
+        correctButton.interactable = false;
     }
 }
