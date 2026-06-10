@@ -1,5 +1,7 @@
-using UnityEngine;
 using TMPro;
+using UnityEditor.SearchService;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Calculate : MonoBehaviour
@@ -14,12 +16,14 @@ public class Calculate : MonoBehaviour
     public Button higherButton;
     public Button lowerButton;
     public Button correctButton;
+    public GameObject restartButton;
 
     //Function to set rules for the start of the game
     public void Start()
     {
         CalculateGuess();
         winText.SetActive(false);
+        restartButton.SetActive(false);
     }
 
     //Function to show the guess on screen
@@ -55,5 +59,12 @@ public class Calculate : MonoBehaviour
         higherButton.interactable = false;
         lowerButton.interactable = false;
         correctButton.interactable = false;
+        restartButton.SetActive(true);
+    }
+
+    //Function for the Restart - Button
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }
