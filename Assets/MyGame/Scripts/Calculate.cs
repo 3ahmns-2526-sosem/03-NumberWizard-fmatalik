@@ -15,34 +15,40 @@ public class Calculate : MonoBehaviour
     public Button lowerButton;
     public Button correctButton;
 
+    //Function to set rules for the start of the game
     public void Start()
     {
         CalculateGuess();
         winText.SetActive(false);
     }
 
+    //Function to show the guess on screen
     public void Update()
     {
         uiGuess.text = "Guess: " + guess.ToString();
     }
 
-    void CalculateGuess()
+    //Function to calculate a guess
+    private void CalculateGuess()
     {
         guess = (min + max)/2;
     }
 
+    //Function for the Higher - Button
     public void HigherButton()
     {
         min = guess + 1;
         CalculateGuess();
     }
 
+    //Function for the Lower - Button
     public void LowerButton()
     {
         max = guess - 1;
         CalculateGuess();
     }
 
+    //Function for the Correct - Button
     public void CorrectButton()
     {
         winText.SetActive(true);
